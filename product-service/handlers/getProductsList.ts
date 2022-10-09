@@ -2,7 +2,6 @@ import { APIGatewayProxyHandler } from 'aws-lambda';
 import 'source-map-support/register';
 import { getProducts } from '../src/dataProvider';
 
-
 export const getProductsList: APIGatewayProxyHandler = async (event, _context) => {
   const headers = {
     "Access-Control-Allow-Origin": "*",
@@ -31,4 +30,4 @@ export const getProductsList: APIGatewayProxyHandler = async (event, _context) =
       headers,
     };
   }
-}
+};
