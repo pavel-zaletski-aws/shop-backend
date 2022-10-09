@@ -1,0 +1,30 @@
+service: product-service
+frameworkVersion: '3'
+custom:
+  webpack:
+    webpackConfig: ./webpack.config.js
+    includeModules: true
+plugins:
+  - serverless-webpack
+provider:
+  name: aws
+  runtime: nodejs14.x
+  stage: dev
+  region: eu-west-1
+  profile: personalAccount
+  apiGateway:
+    minimumCompressionSize: 1024
+functions:
+  getProductsList:
+    handler: handler.getProductsList
+    events:
+      - http:
+          method: get
+          path: products
+          cors: true
+  getProductById:
+    handler: handler.getProductById
+    events:
+      - http:
+          method: get
+          path: 'products/{id}'
