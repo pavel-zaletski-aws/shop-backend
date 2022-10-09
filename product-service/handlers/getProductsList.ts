@@ -5,9 +5,7 @@ import { getProducts } from '../src/dataProvider';
 
 export const getProductsList: APIGatewayProxyHandler = async (event, _context) => {
   const headers = {
-    // "Access-Control-Allow-Headers" : "Content-Type",
     "Access-Control-Allow-Origin": "*",
-    // "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
     'Access-Control-Allow-Credentials': true,
   };
 
