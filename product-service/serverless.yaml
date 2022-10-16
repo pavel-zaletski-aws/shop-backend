@@ -29,3 +29,10 @@ functions:
           method: get
           path: 'products/{id}'
           cors: true
+  addProduct:
+    handler: handler.addProduct
+    events:
+      - http:
+          method: post
+          path: 'products'
+          cors: true

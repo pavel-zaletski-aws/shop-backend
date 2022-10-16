@@ -1,0 +1,34 @@
+CREATE EXTENSION IF NOT EXISTS "uuid-ossp";
+
+create table products (
+	id uuid primary key default uuid_generate_v4(),
+	title text not null,
+	description text,
+	price integer,
+	img text
+)
+
+create table stocks (
+	product_id uuid,
+	count integer,
+	foreign key ("product_id") references "products" ("id")
+)
+
+
+insert into products (title, description, price, img) values
+('Sony XBR-65A9G', 'Short Product Description1', 3300, 'https://crdms.images.consumerreports.org/f_auto,w_300/prod/products/cr/models/398839-tvs-sony-xbr-65a9g-10006417.png'),
+('LG OLED65CXAUA', 'Short Product Description2', 2250, 'https://crdms.images.consumerreports.org/f_auto,w_300/prod/products/cr/models/401489-60-inch-and-larger-tvs-lg-oled65cxaua-10014024.png'),
+('LG OLED65C9PUA', 'Short Product Description3', 2300, 'https://crdms.images.consumerreports.org/f_auto,w_300/prod/products/cr/models/398835-tvs-lg-oled65c9pua-10006121.png'),
+('Samsung QN75Q80T', 'Short Product Description4', 2600, 'https://crdms.images.consumerreports.org/f_auto,w_300/prod/products/cr/models/401622-60-inch-and-larger-tvs-samsung-qn75q80t-10014730.png'),
+('Sony XBR-75X950H', 'Short Product Description5', 2800, 'https://crdms.images.consumerreports.org/f_auto,w_300/prod/products/cr/models/401738-60-inch-and-larger-tvs-sony-xbr-75x950h-10014764.png'),
+('Samsung QN75Q8DT', 'Short Product Description6', 2600, 'https://crdms.images.consumerreports.org/f_auto,w_300/prod/products/cr/models/401740-60-inch-and-larger-tvs-samsung-qn75q8dt-10014881.png')
+
+
+
+insert into stocks (product_id, count) values
+('95be72a6-ec9d-4e52-aef0-873c97086bd0', 10),
+('916429d5-5998-436e-b370-5b64d4e383af', 12),
+('3b687a2b-ee1b-4eef-a008-75ce1ad471a0', 5),
+('2270707c-4a64-4ae1-8739-da2eaa9bd5fe', 7),
+('0c9901bb-61d7-45a9-a3f1-cd4dab08844e', 15),
+('6808f203-a116-4af9-a8c3-fa0675382f6c', 9)

@@ -9,12 +9,13 @@
   },
   "dependencies": {
     "node-fetch": "^2.6.1",
+    "pg": "^8.8.0",
     "source-map-support": "^0.5.10"
   },
   "devDependencies": {
+    "@types/node": "^18.11.0",
     "@types/aws-lambda": "^8.10.17",
     "@types/jest": "^26.0.15",
-    "@types/node": "^10.12.18",
     "@types/serverless": "^1.72.5",
     "aws-lambda": "^1.0.7",
     "fork-ts-checker-webpack-plugin": "^3.0.1",
