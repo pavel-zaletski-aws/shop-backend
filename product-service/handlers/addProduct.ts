@@ -47,4 +47,4 @@ export const addProduct: APIGatewayProxyHandler = async (event, _context) => {
       headers,
     };
   }
-}
+};
