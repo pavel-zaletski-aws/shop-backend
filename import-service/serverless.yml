@@ -79,6 +79,24 @@ resources:
             - ">="
             - 50
 
+    GatewayResponseDenied:
+      Type: AWS::ApiGateway::GatewayResponse
+      Properties:
+        ResponseParameters:
+          gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+          gatewayresponse.header.Access-Control-Allow-Credentials: "'true'"
+        ResponseType: ACCESS_DENIED
+        RestApiId:
+          Ref: ApiGatewayRestApi
+    GatewayResponseUnauthorized:
+      Type: AWS::ApiGateway::GatewayResponse
+      Properties:
+        ResponseParameters:
+          gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
+          gatewayresponse.header.Access-Control-Allow-Credentials: "'true'"
+        ResponseType: UNAUTHORIZED
+        RestApiId:
+          Ref: ApiGatewayRestApi
 functions:
   importProductsFile:
     handler: handler.importProductsFile
@@ -86,6 +104,13 @@ functions:
       - http:
           method: get
           path: import
+          cors: true
+          authorizer:
+            name: basicAuthorizerTest
+            arn: arn:aws:lambda:eu-west-1:615813273316:function:authorization-service-dev-basicAuthorizer
+            resultTtlInSeconds: 0
+            identitySource: method.request.header.Authorization
+            type: token
   importFileParser:
     handler: handler.importFileParser
     events:
